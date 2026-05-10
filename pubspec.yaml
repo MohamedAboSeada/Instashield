@@ -1,0 +1,27 @@
+name: instashield_app_final
+description: "Instant Payment Application"
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: ^3.11.3
+
+dependencies:
+  dartz: ^0.10.1
+  dio: ^5.9.2
+  flutter:
+    sdk: flutter
+  flutter_secure_storage: ^10.1.0
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.11.0
+
+dev_dependencies:
+  build_runner: ^2.15.0
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+  freezed: ^3.2.5
+  json_serializable: ^6.13.2
+
+flutter:
+  uses-material-design: true
