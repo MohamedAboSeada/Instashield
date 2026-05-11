@@ -1,8 +1,8 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user_model.g.dart';
 part 'user_model.freezed.dart';
+part 'user_model.g.dart';
 
 @freezed
 sealed class UserModel with _$UserModel {
