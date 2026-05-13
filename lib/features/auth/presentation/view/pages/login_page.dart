@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
         PhoneNumberField(
           label: "Phone Number",
           name: "phone_number",
-          hint: "01033536598",
+          hint: "Enter your phone number",
         ),
         PasswordField(
           label: "Password",
