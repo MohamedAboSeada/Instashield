@@ -15,6 +15,8 @@ class CustomFormField extends StatelessWidget {
     this.controller,
     this.obscureText = false,
     this.onChanged,
+    this.keyboardType,
+    this.autoFillHints,
   });
 
   final String? label;
@@ -26,18 +28,19 @@ class CustomFormField extends StatelessWidget {
   final TextEditingController? controller;
   final bool obscureText;
   final ValueChanged<String?>? onChanged;
+  final TextInputType? keyboardType;
+  final List<String>? autoFillHints;
 
   @override
   Widget build(BuildContext context) {
-
     return Column(
-      crossAxisAlignment: .start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       spacing: 8.0,
-      mainAxisSize: .min,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        if (label != null)
+        if (label case final label?)
           Text(
-            label!,
+            label,
             style: context.textTheme.labelLarge?.copyWith(
               color: context.colorScheme.onSurface.withValues(alpha: 0.6),
             ),
@@ -45,9 +48,11 @@ class CustomFormField extends StatelessWidget {
         FormBuilderTextField(
           name: name,
           obscureText: obscureText,
+          keyboardType: keyboardType,
           controller: controller,
           onChanged: onChanged,
           validator: validator,
+          autofillHints: autoFillHints,
           decoration: InputDecoration(
             hintText: hintText,
             prefixIcon: prefixIcon,
