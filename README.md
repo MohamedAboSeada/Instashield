@@ -2,17 +2,6 @@
 
 Instant Payment Application
 
-<<<<<<< Updated upstream
-## 📱 Screenshots
-
-### 🔐  Auth Screens
-| Login | Register |
-|------|-----------|
-|  <img src="assets/images/screens/login_screen.png" width="200"/> | <img src="assets/images/screens/register_screen.png" width="200"/> |
-=======
-<<<<<<< Updated upstream
-Screen Shots comping soon
-=======
 ## 📱 Screenshots
 
 ### 🔐  Auth Screens
@@ -24,5 +13,3 @@ Screen Shots comping soon
 -----------------
 | <img src="assets/images/screens/reset_success_screen.png" width="200"/> |
 
->>>>>>> Stashed changes
->>>>>>> Stashed changes
