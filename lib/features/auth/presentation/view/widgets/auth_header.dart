@@ -40,6 +40,7 @@ class AuthHeader extends StatelessWidget {
         12.0.verticalSpace,
         Text(
           subtitle,
+          textAlign: .center,
           style: context.textTheme.bodyLarge?.copyWith(
             color: context.colorScheme.onSurface.withValues(alpha: 0.6),
           ),

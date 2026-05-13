@@ -1,7 +1,10 @@
 import 'package:go_router/go_router.dart';
-import 'package:instashield_app_final/features/auth/presentation/view/pages/login_page.dart';
-import 'package:instashield_app_final/features/auth/presentation/view/pages/register_page.dart';
 
+import '../../features/auth/presentation/view/pages/forget_password_page.dart';
+import '../../features/auth/presentation/view/pages/login_page.dart';
+import '../../features/auth/presentation/view/pages/register_page.dart';
+import '../../features/auth/presentation/view/pages/reset_password_page.dart';
+import '../../features/auth/presentation/view/pages/reset_success_page.dart';
 import 'app_routes.dart';
 
 abstract final class AppRouter {
@@ -15,6 +18,18 @@ abstract final class AppRouter {
       GoRoute(
         path: AppRoutes.registerPath,
         builder: (context, state) => const RegisterPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.forgetPasswordPath,
+        builder: (context, state) => const ForgetPasswordPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.resetPassword,
+        builder: (context, state) => const ResetPasswordPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.resetSuccess,
+        builder: (context, state) => const ResetSuccessPage(),
       ),
     ],
   );

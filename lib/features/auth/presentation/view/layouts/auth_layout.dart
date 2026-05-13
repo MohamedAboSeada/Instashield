@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:instashield_app_final/core/extensions/context_extensions.dart';
+import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/forms/custom_form_builder.dart';
 import '../widgets/auth_header.dart';
 
@@ -16,7 +16,7 @@ class AuthLayout extends StatelessWidget {
     required this.onSubmit,
     required this.btnLabel,
     this.extra,
-    this.formExtra,
+    this.formExtra, this.isLoading = false,
   });
 
   final String title;
@@ -27,6 +27,7 @@ class AuthLayout extends StatelessWidget {
   final void Function(Map<String, Object?>) onSubmit;
   final String btnLabel;
   final List<Widget>? extra;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +62,8 @@ class AuthLayout extends StatelessWidget {
                 fields: fields,
                 onSubmit: onSubmit,
                 btnLabel: btnLabel,
+                isLoading: isLoading,
+                extra: formExtra,
               ),
               if (extra != null) ...extra!,
             ],
