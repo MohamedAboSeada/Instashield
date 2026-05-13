@@ -61,7 +61,6 @@ class _WorkspaceState extends State<Workspace> {
                   label: "Confirm Password",
                   hintText: "Create strong password",
                   type: .confirm,
-                  formKey: _formKey,
                   otherFieldController: _createController,
                 ),
                 const SizedBox(height: 32.0),
