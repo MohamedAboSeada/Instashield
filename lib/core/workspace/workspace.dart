@@ -62,7 +62,6 @@ class _WorkspaceState extends State<Workspace> {
                   label: "Confirm Password",
                   hintText: "Create strong password",
                   type: .confirm,
-                  formKey: _formKey,
                   otherFieldController: _createController,
                 ),
                 32.0.verticalSpace,

@@ -19,7 +19,6 @@ class PasswordField extends StatefulWidget {
     this.label,
     required this.type,
     this.otherFieldController,
-    this.formKey,
   }) : assert(
          type != PasswordFieldType.signUp || otherFieldController != null,
          'otherFieldController is required when type is signUp',
@@ -27,10 +26,6 @@ class PasswordField extends StatefulWidget {
        assert(
          type != PasswordFieldType.confirm || otherFieldController != null,
          'otherFieldController is required when type is confirm',
-       ),
-       assert(
-         type != PasswordFieldType.confirm || formKey != null,
-         'formKey is required when type is confirm',
        );
 
   final String name;
@@ -38,7 +33,6 @@ class PasswordField extends StatefulWidget {
   final String? hintText;
   final String? label;
   final TextEditingController? otherFieldController;
-  final GlobalKey<FormBuilderState>? formKey;
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
@@ -62,7 +56,7 @@ class _PasswordFieldState extends State<PasswordField> {
   }
 
   void _revalidate() {
-    final formState = widget.formKey?.currentState;
+    final formState = FormBuilder.of(context);
     final field = formState?.fields[widget.name];
     if (field?.value != null) {
       field?.validate();
