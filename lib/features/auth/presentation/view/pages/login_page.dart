@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:heroicons/heroicons.dart';
+
 import '../../../../../core/common/widgets/link_button.dart';
 import '../../../../../core/common/widgets/text_divider.dart';
 import '../../../../../core/forms/password_field/password_field.dart';
@@ -36,7 +37,10 @@ class LoginPage extends StatelessWidget {
       onSubmit: (state) {
         debugPrint(state.toString());
       },
-      formExtra: LinkButton(onTap: () {}, label: "Forgot Password?"),
+      formExtra: LinkButton(
+        onTap: () => context.push(AppRoutes.forgetPasswordPath),
+        label: "Forgot Password?",
+      ),
       btnLabel: "Submit",
       extra: [
         20.0.verticalSpace,
