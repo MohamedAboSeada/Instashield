@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../forms/password_field/password_field.dart';
 
@@ -47,7 +48,7 @@ class _WorkspaceState extends State<Workspace> {
                   hintText: "Create strong password",
                   type: .login,
                 ),
-                const SizedBox(height: 16.0),
+                16.0.verticalSpace,
                 PasswordField(
                   name: "create_password",
                   label: "Create Password",
@@ -55,7 +56,7 @@ class _WorkspaceState extends State<Workspace> {
                   type: .signUp,
                   otherFieldController: _createController,
                 ),
-                const SizedBox(height: 16.0),
+                16.0.verticalSpace,
                 PasswordField(
                   name: "confirm_password",
                   label: "Confirm Password",
@@ -64,7 +65,7 @@ class _WorkspaceState extends State<Workspace> {
                   formKey: _formKey,
                   otherFieldController: _createController,
                 ),
-                const SizedBox(height: 32.0),
+                32.0.verticalSpace,
                 SizedBox(
                   height: 52.0,
                   child: FilledButton(
