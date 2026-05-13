@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:heroicons/heroicons.dart';
+
 import '../custom_form_field.dart';
 import 'match_prefix_icon.dart';
 import 'password_level.dart';
@@ -19,7 +20,18 @@ class PasswordField extends StatefulWidget {
     required this.type,
     this.otherFieldController,
     this.formKey,
-  });
+  }) : assert(
+         type != PasswordFieldType.signUp || otherFieldController != null,
+         'otherFieldController is required when type is signUp',
+       ),
+       assert(
+         type != PasswordFieldType.confirm || otherFieldController != null,
+         'otherFieldController is required when type is confirm',
+       ),
+       assert(
+         type != PasswordFieldType.confirm || formKey != null,
+         'formKey is required when type is confirm',
+       );
 
   final String name;
   final PasswordFieldType type;
@@ -41,23 +53,23 @@ class _PasswordFieldState extends State<PasswordField> {
   void initState() {
     super.initState();
     if (widget.type == .signUp) {
-      widget.otherFieldController!.addListener(_calcPasswordLevel);
+      widget.otherFieldController?.addListener(_calcPasswordLevel);
       _calcPasswordLevel();
     }
     if (widget.type == .confirm) {
-      widget.otherFieldController!.addListener(_revalidate);
+      widget.otherFieldController?.addListener(_revalidate);
     }
   }
 
   void _revalidate() {
-    final field = widget.formKey!.currentState?.fields[widget.name];
+    final formState = widget.formKey?.currentState;
+    final field = formState?.fields[widget.name];
     if (field?.value != null) {
       field?.validate();
     }
 
-    if (widget.type == .confirm) {
-      final confirmValue =
-          widget.formKey!.currentState?.fields[widget.name]?.value;
+    if (widget.type == PasswordFieldType.confirm) {
+      final confirmValue = formState?.fields[widget.name]?.value;
       if (confirmValue != null && confirmValue.isNotEmpty) {
         _isMatching.value = confirmValue == widget.otherFieldController?.text;
       }
@@ -69,24 +81,22 @@ class _PasswordFieldState extends State<PasswordField> {
     super.didChangeDependencies();
   }
 
-  /// dispose all the used resources
-  /// ValueNotifiers, controller listeners
   @override
   void dispose() {
     _isObscured.dispose();
     _passwordLevel.dispose();
     _isMatching.dispose();
     if (widget.type == .confirm) {
-      widget.otherFieldController!.removeListener(_revalidate);
+      widget.otherFieldController?.removeListener(_revalidate);
     }
     if (widget.type == .signUp) {
-      widget.otherFieldController!.removeListener(_calcPasswordLevel);
+      widget.otherFieldController?.removeListener(_calcPasswordLevel);
     }
     super.dispose();
   }
 
   void _calcPasswordLevel() {
-    final password = widget.otherFieldController!.text;
+    final password = widget.otherFieldController?.text ?? '';
     _passwordLevel.value = calculatePasswordLevel(password);
   }
 
@@ -97,7 +107,6 @@ class _PasswordFieldState extends State<PasswordField> {
       mainAxisSize: .min,
       spacing: 8.0,
       children: [
-        // Form Field
         ValueListenableBuilder(
           valueListenable: _isObscured,
           builder: (context, value, child) {
@@ -114,7 +123,10 @@ class _PasswordFieldState extends State<PasswordField> {
                   : const HeroIcon(.lockClosed),
               suffixIcons: IconButton(
                 onPressed: () => _isObscured.value = !value,
-                icon: HeroIcon(value ? .eye : .eyeSlash),
+                icon: HeroIcon(
+                  value ? .eye : .eyeSlash,
+                  semanticLabel: value ? "Revel password" : "Hide password",
+                ),
               ),
               validator: PasswordValidators.passwordValidator(
                 widget.type,
@@ -135,7 +147,6 @@ class _PasswordFieldState extends State<PasswordField> {
           },
         ),
 
-        // Strength Bar
         if (widget.type == .signUp)
           ValueListenableBuilder(
             valueListenable: _passwordLevel,

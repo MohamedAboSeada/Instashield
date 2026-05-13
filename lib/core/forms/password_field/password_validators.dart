@@ -40,19 +40,25 @@ abstract final class PasswordValidators {
         errorText: "Password should be at least 8 chars",
       ),
     ),
-    FormBuilderValidators.conditional((_) => type == .confirm, (value) {
-      if (value != controller?.text) {
-        return "Passwords don't match";
-      }
-      return null;
-    }),
-    FormBuilderValidators.conditional((value) => type == .signUp, (value) {
-      final currentLevel = calculatePasswordLevel(value ?? '');
-      if (currentLevel != PasswordLevel.good &&
-          currentLevel != PasswordLevel.strong) {
-        return "Password value should be at least Good or Strong";
-      }
-      return null;
-    }),
+    FormBuilderValidators.conditional(
+      (_) => type == .confirm,
+      (value) {
+        if (value != controller?.text) {
+          return "Passwords don't match";
+        }
+        return null;
+      },
+    ),
+    FormBuilderValidators.conditional(
+      (value) => type == .signUp,
+      (value) {
+        final currentLevel = calculatePasswordLevel(value ?? '');
+        if (currentLevel != PasswordLevel.good &&
+            currentLevel != PasswordLevel.strong) {
+          return "Password value should be at least Good or Strong";
+        }
+        return null;
+      },
+    ),
   ]);
 }
