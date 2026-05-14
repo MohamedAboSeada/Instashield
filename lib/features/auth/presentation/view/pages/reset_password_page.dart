@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:heroicons/heroicons.dart';
+import 'package:instashield_app_final/core/extensions/context_extensions.dart';
 import '../../../../../core/forms/password_field/password_field.dart';
 import '../../../../../core/router/app_routes.dart';
 import '../layouts/auth_layout.dart';
@@ -50,6 +51,12 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         context.go(AppRoutes.resetSuccess);
       },
       btnLabel: "Reset Password",
+      formExtra: Text(
+        "Both passwords must match",
+        style: context.textTheme.labelLarge?.copyWith(
+          color: context.colorScheme.onSurfaceVariant.withValues(alpha: 0.6),
+        ),
+      ),
     );
   }
 }
