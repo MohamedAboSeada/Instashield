@@ -3,9 +3,9 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:heroicons/heroicons.dart';
-import '../../../../../core/router/app_routes.dart';
 
 import '../../../../../core/forms/form_button.dart';
+import '../../../../../core/router/app_routes.dart';
 import '../widgets/auth_header.dart';
 import '../widgets/choose_account_type_radio_group.dart';
 
@@ -51,7 +51,7 @@ class _AccountTypePageState extends State<AccountTypePage> {
                 label: "Continue",
                 onPressed: () {
                   if (_formKey.currentState?.saveAndValidate() ?? false) {
-                    context.go(AppRoutes.loginPath);
+                    context.go(AppRoutes.enableBiometricPath);
                   }
                 },
               ),
