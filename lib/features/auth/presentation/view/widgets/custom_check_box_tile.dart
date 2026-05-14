@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:heroicons/heroicons.dart';
+
 import '../../../../../core/extensions/context_extensions.dart';
 
 class CustomCheckBoxTile extends StatelessWidget {

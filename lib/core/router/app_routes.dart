@@ -8,4 +8,5 @@ abstract final class AppRoutes {
   static const resetSuccess = '$authGroupPath/reset-success';
 
   static const accountTypePath = "$authGroupPath/account-type";
+  static const enableBiometricPath = "$authGroupPath/enable-biometrics";
 }

@@ -16,7 +16,7 @@ class ResetSuccessPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 24.0.w),
+          padding: EdgeInsets.all(24.0.r),
           width: double.infinity,
           child: Column(
             crossAxisAlignment: .stretch,
