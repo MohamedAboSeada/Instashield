@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:heroicons/heroicons.dart';
+import '../../../../../core/router/app_routes.dart';
 
 import '../../../../../core/forms/full_name_field.dart';
 import '../../../../../core/forms/password_field/password_field.dart';
@@ -51,7 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ],
       onSubmit: (state) {
-        debugPrint(state.toString());
+        context.go(AppRoutes.accountTypePath);
       },
       btnLabel: "Create Account",
       extra: [20.0.verticalSpace, const PolicyTerms()],

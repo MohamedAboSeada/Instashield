@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:heroicons/heroicons.dart';
-import 'package:instashield_app_final/core/extensions/context_extensions.dart';
+import '../../../../../core/extensions/context_extensions.dart';
 import '../../../../../core/forms/password_field/password_field.dart';
 import '../../../../../core/router/app_routes.dart';
 import '../layouts/auth_layout.dart';
